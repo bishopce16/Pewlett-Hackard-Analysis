@@ -19,12 +19,18 @@ Images:
 
 ---
 
-Results: Provide a bulleted list with four major points from the retirement titles and the mentorship eligibility tables. Use images if necessary to support your evidence.
+## Results: 
+
+Provide a bulleted list with four major points from the retirement titles and the mentorship eligibility tables. Use images if necessary to support your evidence.
 
 ---
 
-Summary: Provide a high-level summary that addresses the following questions, and then provide two additional queries or tables that can be created that will provide more insight for the upcoming "silver tsunami".
+## Summary: 
+
+Provide a high-level summary that addresses the following questions, and then provide two additional queries or tables that can be created that will provide more insight for the upcoming "silver tsunami".
 
 How many roles will need to be filled as the "silver tsunami" begins to make an impact?
 
 Are there enough retirement-ready employees in the departments that are qualified to mentor the next generation of Pewlett Hackard employees?
+
+What is the current gender gap for Pewlett Hackard employees, and how would Pewlett Hackard hiring practices need to evolve to close the gender gap to improve gender equality?

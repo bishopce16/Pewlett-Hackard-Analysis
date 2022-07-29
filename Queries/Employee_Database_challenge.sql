@@ -116,11 +116,59 @@ ON (e.emp_no = t.emp_no)
 WHERE de.to_date = '9999-01-01'
 AND e.birth_date BETWEEN '1965-01-01' AND '1965-12-31'
 ORDER BY e.emp_no, de.to_date DESC;
-xs
 
+-- 1 of 2 additional tables for analysis
+-- questions about gender gap in hiring for future equality
+-- equality mentorship eligibilty table, 
+-- The Employees Eligible for the Mentorship Program plus gender column.
+SELECT DISTINCT ON (e.emp_no) e.emp_no,
+e.first_name,
+e.last_name,
+e.birth_date,
+e.gender,
+de.from_date,
+de.to_date,
+t.title
+INTO equality_mentorship_eligibilty
+FROM employees as e
+INNER JOIN dept_emp AS de
+ON (e.emp_no = de.emp_no)
+INNER JOIN titles AS t
+ON (e.emp_no = t.emp_no)
+WHERE de.to_date = '9999-01-01'
+AND e.birth_date BETWEEN '1965-01-01' AND '1965-12-31'
+ORDER BY e.emp_no, de.to_date DESC;
 
+-- 2 of 2 additional tables for analysis
+-- questions about gender gap in hiring for future equality.
+-- create a new table containing only the current employees 
+-- who are eligible for retirement plus gender column.
+SELECT ri.emp_no,
+    ri.first_name,
+    ri.last_name,
+	de.to_date,
+	e.gender
+INTO equality_current_emp
+FROM retirement_info as ri
+LEFT JOIN dept_emp as de
+ON ri.emp_no = de.emp_no
+LEFT JOIN employees AS e
+ON (e.emp_no = de.emp_no)
+WHERE de.to_date = ('9999-01-01');
 
+-- create counts for equality table on gender for mentoring program 
+SELECT COUNT (eme.gender), eme.gender
+INTO equality_mentor_counts
+FROM equality_mentorship_eligibilty AS eme
+GROUP BY eme.gender
+ORDER BY COUNT DESC;
 
+-- create counts for equality table on gender on current employees 
+SELECT COUNT (ece.gender), ece.gender
+INTO equality_current_emp_counts
+FROM equality_current_emp AS ece
+GROUP BY ece.gender
+ORDER BY COUNT DESC;
 
 
 
