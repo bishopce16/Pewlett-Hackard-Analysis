@@ -44,71 +44,23 @@ To determine the answers to Pewlett-Hackard questions, they were first broken up
 * Determine how many employees are able to retire and their titles
     * Create a retirement_titles table which holds all the titles of current employees that were born between January 1, 1952, and December 31, 1955. 
 
-    ‘-- deliverable 1, The Number of Retiring Employees by Title.
-    SELECT e.emp_no,
-    e.first_name,
-    e.last_name,
-    t.title, 
-    t.from_date,
-    t.to_date,
-    FROM employees AS e
-    INNER JOIN titles AS t
-    ON (e.emp_no = t.title)
-    WHERE (e.birth_date BETWEEN '1951-01-01' AND '1955-12-31')
-    ORDER BY e.emp_no;’
+    ![deliverable_1_Number_of_Retiring_Employees_by_Title](https://github.com/bishopce16/Pewlett-Hackard-Analysis/blob/main/Image/deliverable_1_Number_of_Retiring_Employees_by_Title.png)
 
-    * The code below is the SQL script provided in the challenge starter code.
+    * The code below is the SQL script for select distinct on unique_titles and counts on the retiring_titles table.
 
-    ‘-- Use Dictinct with Order by to remove duplicate rows
-    -- SELECT DISTINCT ON (______) _____,
-    ______,
-    ______,
-    ______
+   ![deliverable _1_select_distinct_on](https://github.com/bishopce16/Pewlett-Hackard-Analysis/blob/main/Image/deliverable%20_1_select_distinct_on.png)
 
-    INTO nameyourtable
-    FROM _______
-    WHERE _______
-    ORDER BY _____, _____ DESC;’
+   ![retiring titles table](https://github.com/bishopce16/Pewlett-Hackard-Analysis/blob/main/Image/retiring_titles_table.png)
 
-    ‘SELECT DISTINCT ON (ri.emp_no) ri.emp_no,
-    ri.first_name,
-    ri.last_name,
-    ri.title
-    INTO unique_titles
-    FROM retirement_info AS ri
-    ORDER BY ri.emp_no, ri.to_date DESC;
-
-    -- create retiring titles table
-    SELECT COUNT (ut.title), ut.title
-    INTO retiring_titles
-    FROM unique_titles AS ut
-    GROUP BY ut.title
-    ORDER BY COUNT DESC;’
-
-    * The dataset has employees with multiple titles, that may be the result of promotions. Because of this a retiring_titles table was created that groups each employee’s most recent titles. 
+    * The dataset has employees with multiple titles, that may be the result of promotions. Because of this a
+    retiring_titles table was created that groups each employee’s most recent titles. 
     ![ retiring_titles](https://github.com/bishopce16/Pewlett-Hackard-Analysis/blob/main/Image/retiring_titles.png)
 
 
 * Determine how many employees are eligible to participate in the mentorship program
-    * A mentorship_eligibility  table was created that contains the current employees that were born between January 1, 1965 and December 31, 1965.
+    * A mentorship_eligibility  table was created that contains the current employees that were born between January 1,     1965 and December 31, 1965.
 
-    ‘-- deliverable 2, The Employees Eligible for the Mentorship Program
-    SELECT DISTINCT ON (e.emp_no) e.emp_no,
-    e.first_name,
-    e.last_name,
-    e.birth_date,
-    de.from_date,
-    de.to_date,
-    t.title
-    INTO mentorship_eligibilty
-    FROM employees as e
-    INNER JOIN dept_emp AS de
-    ON (e.emp_no = de.emp_no)
-    INNER JOIN titles AS t
-    ON (e.emp_no = t.emp_no)
-    WHERE de.to_date = '9999-01-01'
-    AND e.birth_date BETWEEN '1965-01-01' AND '1965-12-31'
-    ORDER BY e.emp_no, de.to_date DESC;’
+    ![mentorship_eligibilty](https://github.com/bishopce16/Pewlett-Hackard-Analysis/blob/main/Image/deliverable_2_mentorship_eligibilty.png)
 
 
 ---
